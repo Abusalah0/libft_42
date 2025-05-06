@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 10:42:42 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/06 18:00:19 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:08:34 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
 int					ft_isspace(int c);
+long				ft_atol(const char *str);
 bool				ft_is_power_of_2(int num);
 int					ft_isnumber(char *str);
 char				*ft_itoa(int n);
@@ -53,6 +54,8 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strnstr(const char *big, const char *little,
 						size_t len);
 char				*ft_strncpy(char *dest, const char *src, size_t n);
+char				*ft_str_replace(const char *str, const char *old, const char *new);
+char				*ft_strcpy(char *dest, const char *src);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 int					ft_tolower(int c);

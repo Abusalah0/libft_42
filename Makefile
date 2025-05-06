@@ -6,6 +6,7 @@ SRC_DIR = src
 OBJS_DIR = objs
 
 SRC =  	int_ops/ft_atoi.c \
+		int_ops/ft_atol.c \
 		int_ops/ft_tolower.c \
 		int_ops/ft_toupper.c \
 		int_ops/ft_itoa.c \
@@ -41,6 +42,8 @@ SRC =  	int_ops/ft_atoi.c \
 		string/ft_striteri.c \
 		string/ft_strcmp.c \
 		string/ft_strncpy.c \
+		string/ft_strcpy.c \
+		string/ft_str_replace.c \
 		print/ft_putchar_fd.c \
 		print/ft_putstr_fd.c \
 		print/ft_putendl_fd.c \
