@@ -9,6 +9,8 @@ SRC =  	int_ops/ft_atoi.c \
 		int_ops/ft_tolower.c \
 		int_ops/ft_toupper.c \
 		int_ops/ft_itoa.c \
+		int_ops/ft_isspace.c \
+		int_ops/ft_atod.c \
 		int_ops/ft_isalnum.c \
 		int_ops/ft_isalpha.c \
 		int_ops/ft_isascii.c \
