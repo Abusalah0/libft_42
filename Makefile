@@ -1,7 +1,11 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-CFILES = ft_isdigit.c \
-		ft_atoi.c \
+CFLAGS = -Wall -Werror -Wextra -Iinclude
+NAME = libft.a
+
+SRC_DIR = src
+OBJS_DIR = objs
+
+SRC =  	ft_atoi.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_isalnum.c \
@@ -36,7 +40,7 @@ CFILES = ft_isdigit.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
 		ft_strcmp.c \
-		ft_strncpy.c \
+		ft_strncpy.c
 
 BONUS = ft_lstadd_back_bonus.c \
 		ft_lstadd_front_bonus.c \
@@ -48,21 +52,29 @@ BONUS = ft_lstadd_back_bonus.c \
 		ft_lstnew_bonus.c \
 		ft_lstsize_bonus.c
 
-OBJECTS = $(CFILES:.c=.o)
-OBJECTS_B = $(BONUS:.c=.o)
+SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
+BONUS_SRCS = $(addprefix $(SRC_DIR)/, $(BONUS))
 
-NAME = libft.a
+OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))
+BONUS_OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJS_DIR)/%.o, $(BONUS_SRCS))
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	ar rcs $(NAME) $(OBJECTS)
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
-bonus: $(NAME) $(OBJECTS_B)
-	ar rcs $(NAME) $(OBJECTS_B)
+bonus: $(OBJS) $(BONUS_OBJS)
+	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+
+$(OBJS_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJS_DIR)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJS_DIR):
+	@mkdir -p $(OBJS_DIR)
 
 clean:
-	rm -f $(OBJECTS) $(OBJECTS_B)
+	rm -rf $(OBJS_DIR)
 
 fclean: clean
 	rm -f $(NAME)
@@ -70,3 +82,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re bonus
+# .SILENT: $(OBJS_DIR) $(OBJS) $(BONUS_OBJS)
