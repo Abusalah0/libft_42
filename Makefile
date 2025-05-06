@@ -14,6 +14,8 @@ SRC =  	int_ops/ft_atoi.c \
 		int_ops/ft_isascii.c \
 		int_ops/ft_isdigit.c \
 		int_ops/ft_isprint.c \
+		int_ops/ft_is_pow_of_2.c \
+		int_ops/ft_isnumber.c \
 		memory/ft_bzero.c \
 		memory/ft_calloc.c \
 		memory/ft_memchr.c  \
