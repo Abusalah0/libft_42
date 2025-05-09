@@ -89,4 +89,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re bonus
-# .SILENT: $(OBJS_DIR) $(OBJS) $(BONUS_OBJS)
