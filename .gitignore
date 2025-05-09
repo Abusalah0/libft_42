@@ -1,3 +1,8 @@
 *.o
 objs
+.vscode
 libft.a
+*.dSYM
+*.d
+a.out
+tests/
