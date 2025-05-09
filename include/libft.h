@@ -6,7 +6,7 @@
 /*   By: abdsalah <abdsalah@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 10:42:42 by abdsalah          #+#    #+#             */
-/*   Updated: 2025/05/06 18:08:34 by abdsalah         ###   ########.fr       */
+/*   Updated: 2025/05/09 15:44:41 by abdsalah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int					ft_isalpha(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
+int					count_digits(int n);
 int					ft_isspace(int c);
 long				ft_atol(const char *str);
 bool				ft_is_power_of_2(int num);
