@@ -20,20 +20,20 @@ All functions are compiled into a static archive called `libft.a`, which can be 
 
 ```bash
 # Clone the repository into your project
-git clone https://github.com/Abusalah0/libft_42.git
+$ git clone https://github.com/Abusalah0/libft_42.git
 
 # Navigate to the library folder
-cd libft_42
+$ cd libft_42
 
 # Build the library
-make
+$ make
 ```
 
 ### 🔗 Linking Libft in Your Code
 
 ```bash
 # Compile your program with libft (replace 'libft_location' with the actual path)
-cc main.c -Llibft_location/ -lft
+$ cc main.c -Llibft_location/ -lft
 ```
 
 ---
@@ -43,7 +43,7 @@ cc main.c -Llibft_location/ -lft
 Feel free to modify any function as needed. After making your changes, simply run:
 
 ```bash
-make re
+$ make re
 ```
 
 This will rebuild the library with your modifications.
