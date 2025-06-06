@@ -25,7 +25,6 @@ static void	*ft_free_buffers(char **global_buffer, char *read_buffer)
 	return (NULL);
 }
 
-
 static char	*ft_read_into_buffer(char **global_buffer, int fd)
 {
 	int		read_value;
