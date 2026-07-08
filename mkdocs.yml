@@ -1,0 +1,22 @@
+site_name: libft Documentation
+site_description: Guides and function reference for the libft C library
+site_url: https://abusalah0.github.io/libft_42/
+repo_url: https://github.com/Abusalah0/libft_42
+repo_name: Abusalah0/libft_42
+
+theme:
+  name: mkdocs
+
+nav:
+  - Home: index.md
+  - Tutorial:
+      - Build your first program: tutorial/build-your-first-program.md
+  - How-to guides:
+      - Use libft in another project: how-to/use-libft-in-another-project.md
+  - Reference:
+      - Function reference: reference/functions.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true

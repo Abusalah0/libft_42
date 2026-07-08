@@ -6,3 +6,5 @@ libft.a
 *.d
 a.out
 tests/
+.venv/
+site/
