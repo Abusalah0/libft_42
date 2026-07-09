@@ -64,19 +64,19 @@ SRC = main.c
 OBJ = $(SRC:.c=.o)
 
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(OBJ) -L$(LIBFT_DIR) -lft -o $(NAME)
+   $(CC) $(OBJ) -L$(LIBFT_DIR) -lft -o $(NAME)
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+   $(MAKE) -C $(LIBFT_DIR)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+   $(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+   rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+   rm -f $(NAME)
 
 re: fclean $(NAME)
 
