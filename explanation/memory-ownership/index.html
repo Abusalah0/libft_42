@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://abusalah0.github.io/libft_42/explanation/memory-ownership/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Memory Ownership - libft Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">libft Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Tutorial</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../tutorial/build-your-first-program/" class="dropdown-item">Build your first program</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">How-to guides</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../how-to/use-libft-in-another-project/" class="dropdown-item">Use libft in another project</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Explainations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Memory Ownership</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reference</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../reference/functions/" class="dropdown-item">Function reference</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../how-to/use-libft-in-another-project/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../reference/functions/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/Abusalah0/libft_42/edit/master/docs/explanation/memory-ownership.md" class="nav-link">Edit on Abusalah0/libft_42
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#memory-ownership-in-libft" class="nav-link">Memory ownership in libft</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#owned-and-borrowed-memory" class="nav-link">Owned and borrowed memory</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#functions-that-allocate-memory" class="nav-link">Functions that allocate memory</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#functions-that-return-borrowed-pointers" class="nav-link">Functions that return borrowed pointers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#nested-allocations-from-ft_split" class="nav-link">Nested allocations from ft_split</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#linked-list-ownership" class="nav-link">Linked-list ownership</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#common-ownership-mistakes" class="nav-link">Common ownership mistakes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#ownership-checklist" class="nav-link">Ownership checklist</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="memory-ownership-in-libft">Memory ownership in libft<a class="headerlink" href="#memory-ownership-in-libft" title="Permanent link">&para;</a></h1>
+<p>C does not manage dynamically allocated memory for you. When a function allocates memory, your program must eventually release it with <code>free()</code>.</p>
+<p>To use libft safely, you need to know whether a returned pointer refers to:</p>
+<ul>
+<li>newly allocated memory,</li>
+<li>memory owned by another object,</li>
+<li>or a collection containing several allocations.</li>
+</ul>
+<h2 id="owned-and-borrowed-memory">Owned and borrowed memory<a class="headerlink" href="#owned-and-borrowed-memory" title="Permanent link">&para;</a></h2>
+<p>An <strong>owned pointer</strong> refers to memory that your code is responsible for releasing.</p>
+<p>A <strong>borrowed pointer</strong> refers to memory owned elsewhere. You may use the pointer while the original memory remains valid, but you must not free it separately.</p>
+<p>Consider the following example:</p>
+<pre><code class="language-c">char *copy;
+
+copy = ft_strdup(&quot;libft&quot;);
+if (copy == NULL)
+    return (1);
+
+free(copy);
+````
+
+`ft_strdup` creates a new string. The returned pointer owns a separate allocation, so the caller must free it.
+
+By contrast, `ft_strchr` returns a pointer into an existing string:
+
+```c
+char text[] = &quot;libft&quot;;
+char *match;
+
+match = ft_strchr(text, 'f');
+</code></pre>
+<p><code>match</code> points to part of <code>text</code>. It does not refer to a new allocation.</p>
+<p>Do not call:</p>
+<pre><code class="language-c">free(match);
+</code></pre>
+<p>The original array owns that memory.</p>
+<h2 id="functions-that-allocate-memory">Functions that allocate memory<a class="headerlink" href="#functions-that-allocate-memory" title="Permanent link">&para;</a></h2>
+<p>Several libft functions return newly allocated memory:</p>
+<ul>
+<li><code>ft_calloc</code></li>
+<li><code>ft_strdup</code></li>
+<li><code>ft_substr</code></li>
+<li><code>ft_strjoin</code></li>
+<li><code>ft_strtrim</code></li>
+<li><code>ft_split</code></li>
+<li><code>ft_itoa</code></li>
+<li><code>ft_strmapi</code></li>
+</ul>
+<p>Check the result before using it because allocation can fail:</p>
+<pre><code class="language-c">char *result;
+
+result = ft_strjoin(&quot;lib&quot;, &quot;ft&quot;);
+if (result == NULL)
+    return (1);
+
+ft_putstr_fd(result, 1);
+free(result);
+</code></pre>
+<p>Free each successful allocation exactly once.</p>
+<h2 id="functions-that-return-borrowed-pointers">Functions that return borrowed pointers<a class="headerlink" href="#functions-that-return-borrowed-pointers" title="Permanent link">&para;</a></h2>
+<p>Some functions search existing memory and return a pointer into it:</p>
+<ul>
+<li><code>ft_strchr</code></li>
+<li><code>ft_strrchr</code></li>
+<li><code>ft_memchr</code></li>
+</ul>
+<p>For example:</p>
+<pre><code class="language-c">char text[] = &quot;hello&quot;;
+char *result;
+
+result = ft_strchr(text, 'e');
+if (result != NULL)
+    ft_putstr_fd(result, 1);
+</code></pre>
+<p><code>result</code> points to the second character of <code>text</code>. It remains valid only while <code>text</code> remains valid.</p>
+<p>If the original memory is freed or goes out of scope, the borrowed pointer becomes invalid.</p>
+<h2 id="nested-allocations-from-ft_split">Nested allocations from <code>ft_split</code><a class="headerlink" href="#nested-allocations-from-ft_split" title="Permanent link">&para;</a></h2>
+<p><code>ft_split</code> creates more than one allocation. It allocates:</p>
+<ol>
+<li>an array of string pointers,</li>
+<li>one string for each part,</li>
+<li>a final null pointer that marks the end of the array.</li>
+</ol>
+<pre><code class="language-c">char **parts;
+
+parts = ft_split(&quot;one:two:three&quot;, ':');
+if (parts == NULL)
+    return (1);
+</code></pre>
+<p>Free every string before freeing the array:</p>
+<pre><code class="language-c">void free_split(char **parts)
+{
+    size_t i;
+
+    if (parts == NULL)
+        return;
+    i = 0;
+    while (parts[i] != NULL)
+    {
+        free(parts[i]);
+        i++;
+    }
+    free(parts);
+}
+</code></pre>
+<p>You can then use the helper after processing the result:</p>
+<pre><code class="language-c">parts = ft_split(&quot;one:two:three&quot;, ':');
+if (parts == NULL)
+    return (1);
+
+/* Use parts. */
+
+free_split(parts);
+</code></pre>
+<p>Freeing only the array leaks the individual strings. Freeing only the strings leaks the array.</p>
+<h2 id="linked-list-ownership">Linked-list ownership<a class="headerlink" href="#linked-list-ownership" title="Permanent link">&para;</a></h2>
+<p>A linked-list node and its content are separate values.</p>
+<p><code>ft_lstnew</code> allocates a new node, but it does not copy the content passed to it:</p>
+<pre><code class="language-c">char *content;
+t_list *node;
+
+content = ft_strdup(&quot;libft&quot;);
+if (content == NULL)
+    return (1);
+
+node = ft_lstnew(content);
+if (node == NULL)
+{
+    free(content);
+    return (1);
+}
+</code></pre>
+<p>In this example, the program allocates both <code>content</code> and <code>node</code>.</p>
+<p>When deleting the node, provide a function that releases its content:</p>
+<pre><code class="language-c">ft_lstdelone(node, free);
+</code></pre>
+<p>The deletion function determines how the content is cleaned up. This allows list nodes to contain dynamically allocated data, static data, or other objects with custom cleanup requirements.</p>
+<h2 id="common-ownership-mistakes">Common ownership mistakes<a class="headerlink" href="#common-ownership-mistakes" title="Permanent link">&para;</a></h2>
+<h3 id="memory-leak">Memory leak<a class="headerlink" href="#memory-leak" title="Permanent link">&para;</a></h3>
+<p>A memory leak occurs when your program loses the last pointer to an allocation without freeing it.</p>
+<pre><code class="language-c">char *text;
+
+text = ft_strdup(&quot;first&quot;);
+text = ft_strdup(&quot;second&quot;);
+</code></pre>
+<p>The second assignment replaces the only pointer to the first allocation.</p>
+<p>Free the first value before replacing it:</p>
+<pre><code class="language-c">text = ft_strdup(&quot;first&quot;);
+if (text == NULL)
+    return (1);
+
+free(text);
+text = ft_strdup(&quot;second&quot;);
+</code></pre>
+<h3 id="double-free">Double free<a class="headerlink" href="#double-free" title="Permanent link">&para;</a></h3>
+<p>A double free occurs when your program releases the same allocation more than once.</p>
+<pre><code class="language-c">free(text);
+free(text);
+</code></pre>
+<p>After freeing a pointer, you can assign <code>NULL</code> to it when the pointer may be reused:</p>
+<pre><code class="language-c">free(text);
+text = NULL;
+</code></pre>
+<p>Calling <code>free(NULL)</code> is valid.</p>
+<h3 id="freeing-borrowed-memory">Freeing borrowed memory<a class="headerlink" href="#freeing-borrowed-memory" title="Permanent link">&para;</a></h3>
+<p>Do not free pointers returned inside existing strings or buffers:</p>
+<pre><code class="language-c">match = ft_strchr(text, 'x');
+free(match);
+</code></pre>
+<p><code>match</code> does not own a separate allocation.</p>
+<h3 id="use-after-free">Use after free<a class="headerlink" href="#use-after-free" title="Permanent link">&para;</a></h3>
+<p>A pointer becomes invalid after its allocation is released:</p>
+<pre><code class="language-c">free(text);
+ft_putstr_fd(text, 1);
+</code></pre>
+<p>Do not read from or write to freed memory.</p>
+<h2 id="ownership-checklist">Ownership checklist<a class="headerlink" href="#ownership-checklist" title="Permanent link">&para;</a></h2>
+<p>Before using a returned pointer, ask:</p>
+<ol>
+<li>Did the function allocate new memory?</li>
+<li>Who is responsible for freeing it?</li>
+<li>Does the value contain nested allocations?</li>
+<li>How long does the original memory remain valid?</li>
+<li>What cleanup is required when an operation fails?</li>
+</ol>
+<p>Answering these questions helps prevent memory leaks, double frees, and invalid memory access.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
