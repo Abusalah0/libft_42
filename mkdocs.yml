@@ -13,6 +13,8 @@ nav:
       - Build your first program: tutorial/build-your-first-program.md
   - How-to guides:
       - Use libft in another project: how-to/use-libft-in-another-project.md
+  - Explainations:
+      - Memory Ownership: explanation/memory-ownership.md
   - Reference:
       - Function reference: reference/functions.md
 
