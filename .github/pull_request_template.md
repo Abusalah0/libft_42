@@ -19,6 +19,6 @@ make bonus
 
 - [ ] The change is focused and does not include unrelated edits.
 - [ ] The code builds without warnings.
-- [ ] Existing tests pass.
-- [ ] New behavior includes appropriate tests.
+- [ ] Relevant tests or reproducer programs pass.
+- [ ] New behavior was exercised with appropriate tests or a focused reproducer.
 - [ ] Documentation was updated when necessary.

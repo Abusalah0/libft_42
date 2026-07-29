@@ -23,14 +23,15 @@ You need:
 
 - Git,
 - Make,
-- a C compiler such as `cc`, `clang`, or `gcc`.
+- a C compiler such as `cc`, `clang`, or `gcc`,
+- Python 3 and its `venv` module when working on documentation.
 
 Clone your fork:
 
 ```sh
 git clone https://github.com/YOUR_USERNAME/libft_42.git
 cd libft_42
-````
+```
 
 Add the original repository as an upstream remote:
 
@@ -60,11 +61,12 @@ docs/improve-memory-ownership
 The main project files are organized as follows:
 
 ```text
-include/       Public headers
-src/           Function implementations
-docs/          Project documentation
-Makefile       Library build rules
-mkdocs.yml     Documentation site configuration
+include/                Public headers
+src/                    Function implementations
+docs/                   Project documentation
+Makefile                Library build rules
+mkdocs.yml              Documentation site configuration
+requirements-docs.txt   Documentation dependencies
 ```
 
 Public functions must be declared in `include/libft.h`.
@@ -89,7 +91,7 @@ Build the linked-list functions:
 make bonus
 ```
 
-Rebuild everything from a clean state:
+Rebuild the base library from a clean state:
 
 ```sh
 make re
@@ -172,6 +174,14 @@ Update the documentation when changing:
 - memory ownership,
 - supported inputs,
 - build or integration instructions.
+
+Create a virtual environment and install the documentation dependencies:
+
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements-docs.txt
+```
 
 Preview the documentation locally with:
 
