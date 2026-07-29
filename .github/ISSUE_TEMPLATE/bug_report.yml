@@ -1,0 +1,57 @@
+name: Bug report
+description: Report reproducible incorrect behavior in libft
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Please provide a small reproducible example.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened, and what did you expect instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Provide the smallest C program that reproduces the issue.
+      render: c
+    validations:
+      required: true
+
+  - type: input
+    id: commit
+    attributes:
+      label: Version or commit
+      placeholder: v1.0.0 or a commit SHA
+    validations:
+      required: true
+
+  - type: input
+    id: compiler
+    attributes:
+      label: Compiler
+      placeholder: cc --version
+    validations:
+      required: true
+
+  - type: input
+    id: operating-system
+    attributes:
+      label: Operating system
+      placeholder: Fedora 44, Ubuntu 24.04, macOS, etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add logs, sanitizer output, or debugger results.
