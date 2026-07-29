@@ -162,6 +162,12 @@ int main(void)
 }
 ```
 
+## Contributing and governance
+
+Contributions are welcome. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) for development setup, testing, and pull request guidelines.
+
+Project decision-making and maintainer authority are described in [`GOVERNANCE.md`](GOVERNANCE.md).
+
 ## Notes
 
 - BUFFER_SIZE for get_next_line defaults to 1024 and can be overridden at compile time.

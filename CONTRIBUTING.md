@@ -4,6 +4,8 @@ Thank you for your interest in contributing to libft.
 
 This project welcomes focused bug fixes, tests, documentation improvements, and changes that improve correctness or maintainability without unnecessarily expanding the library.
 
+Project decision-making and maintainer authority are described in [`GOVERNANCE.md`](GOVERNANCE.md).
+
 ## Before you start
 
 For significant changes, open an issue before writing code. Describe:
